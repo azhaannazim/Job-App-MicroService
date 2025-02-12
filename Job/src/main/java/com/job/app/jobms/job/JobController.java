@@ -1,6 +1,6 @@
 package com.job.app.jobms.job;
 
-import com.job.app.jobms.payload.JobWithCompanyDTO;
+import com.job.app.jobms.payload.JobDTO;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
@@ -16,20 +16,20 @@ public class JobController {
     }
 
     @GetMapping
-    public ResponseEntity<List<Job>> getAllJobs() {
+    public ResponseEntity<List<JobDTO>> getAllJobs() {
         return ResponseEntity.ok(jobService.findAll());
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Job> getJobById(@PathVariable Long id) {
-        Job job = jobService.getJobById(id);
-        return (job != null) ? ResponseEntity.ok(job) : ResponseEntity.notFound().build();
+    public ResponseEntity<JobDTO> getJobById(@PathVariable Long id) {
+        JobDTO jobDTO = jobService.getJobById(id);
+        return (jobDTO != null) ? ResponseEntity.ok(jobDTO) : ResponseEntity.notFound().build();
     }
 
     @PostMapping
-    public ResponseEntity<JobWithCompanyDTO> createJob(@RequestBody Job job) {
-        JobWithCompanyDTO jobWithCompanyDTO = jobService.createJob(job);
-        return ResponseEntity.ok(jobWithCompanyDTO);
+    public ResponseEntity<JobDTO> createJob(@RequestBody Job job) {
+        JobDTO jobDTO = jobService.createJob(job);
+        return ResponseEntity.ok(jobDTO);
     }
 
     @PutMapping("/{id}")

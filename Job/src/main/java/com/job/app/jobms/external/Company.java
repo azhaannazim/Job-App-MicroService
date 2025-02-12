@@ -1,6 +1,5 @@
 package com.job.app.jobms.external;
 
-import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -10,7 +9,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Company {
     private Long Id;
-
     private String name;
     private String description;
 }
